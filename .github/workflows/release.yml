@@ -72,7 +72,7 @@ jobs:
             for platform in linux-amd64 darwin-amd64 windows-amd64; do
                 target="gopass-summon-provider-${VERSION}-${platform}"
                 mv "gopass-summon-provider-${platform}" gopass-summon-provider
-                tar -czf "${target}.tar.gz" "${target}"
+                tar -czf "${target}.tar.gz" "gopass-summon-provider"
             done
         env:
           VERSION: ${{ steps.get-version.outputs.VERSION }}
