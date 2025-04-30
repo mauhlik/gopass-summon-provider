@@ -69,9 +69,12 @@ jobs:
 
       - name: Compress binaries
         run: |
-            tar -czf "gopass-summon-provider-${VERSION}-linux-amd64.tar.gz" gopass-summon-provider-linux-amd64
-            tar -czf "gopass-summon-provider-${VERSION}-darwin-amd64.tar.gz" gopass-summon-provider-darwin-amd64
-            tar -czf "gopass-summon-provider-${VERSION}-windows-amd64.tar.gz" gopass-summon-provider-windows-amd64
+            for platform in linux-amd64 darwin-amd64 windows-amd64; do
+                target_dir="gopass-summon-provider-${VERSION}-${platform}"
+                mkdir -p "${target_dir}"
+                mv "gopass-summon-provider-${platform}" "${target_dir}"
+                tar -czf "${target_dir}.tar.gz" "${target_dir}"
+            done
         env:
           VERSION: ${{ steps.get-version.outputs.VERSION }}
 
