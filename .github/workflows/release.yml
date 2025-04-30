@@ -72,7 +72,7 @@ jobs:
             for platform in linux-amd64 darwin-amd64 windows-amd64; do
                 target_dir="gopass-summon-provider-${VERSION}-${platform}"
                 mkdir -p "${target_dir}"
-                mv "gopass-summon-provider-${platform}" "${target_dir}"
+                mv "gopass-summon-provider-${platform}" "${target_dir}/gopass-summon-provider"
                 tar -czf "${target_dir}.tar.gz" "${target_dir}"
             done
         env:
